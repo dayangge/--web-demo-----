@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" >
+<meta name="description" content="慕课网，移动WEB，alloyteam">
+
+<meta name="viewport" content="width=320,initial-scale=1">
+
+<title>这不是个Demo页</title>
+
+<style>
+	/** also for the fu*k IE */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+    display: block;
+}
+ul,li,p{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+}
+
+.clearfix::after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+/** 弹性图片的设计*/
+body{
+	font: 16px '微软雅黑';
+	background: #FAF2DA;
+	margin: 0;
+	padding: 0;
+}
+/*img{
+    max-width: 100%
+}*/
+a{
+	text-decoration: none;
+}
+
+#pagewrap {
+	width: 1024px;
+	margin: 0 auto;
+	padding: 0 20px;
+	border: 5px solid;
+	border-color: transparent black transparent black;
+	position: relative;
+	box-sizing: border-box;
+}
+.header {
+	height: 160px;
+	margin-bottom: 15px;
+}
+.header .betaIcon{
+	background: #63D1E6;
+	display: inline-block;
+	font-size: 11px;
+	color: white;
+	padding: 3px;
+	border-radius: 5px;
+	font-style: normal;
+	position: absolute;
+	margin-left: 8px;
+}
+.header .site-logo {
+	text-shadow: 1px 1px 5px rgba(187, 187, 97, 0.71);
+	position: relative;
+}
+
+#main-nav {
+ 	width: 1024px;
+ 	margin-left: -25px;
+	position: relative;
+	/*background: -webkit-gradient(linear, left top, left bottom, from(#B9B9B9), to(#6A6A6A));*/
+	background: black;
+	line-height: 1.4;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 1px 1px rgba(0, 0, 0, .4);
+}
+#main-nav li{
+	float: left;
+	margin-left: 20px;
+}
+#main-nav li a{
+	color: white;
+	font-weight: bold;
+	padding: 14px 15px;
+	line-height: 100%;
+	display: block;
+}
+#main-nav li:hover{
+	background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4F4F4F));;
+}
+#main-nav .search{
+	padding-top: 9px;
+	margin-right: 25px;
+	float: right;
+}
+#main-nav .search input{
+	width: 170px;
+	height: 20px;
+	border-radius: 5px;
+}
+#main-nav .search button{
+	cursor: pointer;
+	height: 25px;
+}
+
+.sidebar {
+	width: 280px;
+	float: right;
+}
+.sidebar .widget{
+	background: #FFFCF0;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 1px 1px rgba(0, 0, 0, .4);
+}
+.sidebar .widget .title{
+	color: #D1D648;
+	font-weight: bold;
+	background: #414039;
+	border-radius: 8px 8px 0 0;
+	padding: 8px 0 8px 15px;
+}
+.sidebar .widget .title:hover{
+	text-decoration: none;
+}
+.sidebar .widget li:last-child{
+	border-radius: 0 0 8px 8px;
+	
+}
+.sidebar .folder li{
+	border-bottom: 1px solid #DDD;
+	padding: 8px 0 8px 15px;
+	color: #7C7C7C;
+	cursor: pointer;
+}
+.sidebar .folder li:hover{
+	text-decoration: underline;
+	background: white;
+}
+.sidebar .faces li{
+	float: left;
+	margin: 8px 4px;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.17);
+	cursor: pointer;
+}
+.sidebar .faces img{
+	width: 60px;
+	height: 60px;
+	border: 1px solid white;
+	display: -webkit-box;
+}
+.sidebar .comment li{
+	padding: 5px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 14px;
+}
+.sidebar .comment img{
+	width: 32px;
+	margin: 2px;
+	float: left;
+}
+.sidebar .comment .name{
+	color: #1DAFE7;
+	margin: 0 5px;
+}
+.sidebar .comment .desc{
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 230px;		
+}
+.sidebar .comment .desc span:nth-child(2):hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+.content {
+	width: 600px;
+	float: left;
+}
+.content #slider{
+	background: rgba(212, 255, 202, 0.2);
+	border-radius: 20px;
+}
+.content .article{
+	padding-bottom: 10px;
+	margin: 20px auto 40px;
+}
+.content .article .img{
+	height: 250px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 10px;
+}
+.content .article .img img{
+	width: 600px;
+	position: absolute;
+	top: -25%;		
+}
+.content .article .img .tips{
+	position: absolute;
+	top: 10%;
+	color: #fff;		
+}
+.content .article .img .date{
+	float: left;
+	background: black;
+	padding: 5px 10px;
+}
+.content .article .img .triangle{
+	float: left;
+	border: 13px solid;
+	border-color: transparent transparent transparent black;
+}
+
+.content .article .author{
+	width: 80px;
+	float: left;
+	margin: 0 20px 5px 0;
+}
+.content .article .author img{
+	width: 80px;
+}
+.content .article .title{
+	font-weight: bolder;
+	font-size: 19px;
+	text-shadow: 0 0 5px rgba(48, 48, 48, 0.6);
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+.content .article .title:hover{
+	text-shadow: 0 0 5px rgba(148, 156, 52, 0.6);
+}
+
+.content .article .desc{
+	color:#858585;
+	cursor: pointer;
+}
+.content .article .desc:hover{
+	text-decoration: underline;
+}
+.content .article .nums{
+	margin-bottom: 5px;
+	height: 21px;
+	line-height: 21px;
+}
+.content .article .nums span{
+	margin-right:10px;
+	float: right;
+}
+.content .article .nums .trangleLB{
+	border: 10px solid;
+	border-color: transparent #EBEB46 #EBEB46 transparent;
+	float: right;
+}
+.content .article .nums .rectangle{
+	background: #EBEB46;
+	float: right;
+	width: 300px;
+	height: 20px;
+	padding-right: 20px;
+	color:#858585;
+}
+.content .article .hr{
+	border-bottom: 2px solid dimGray;
+	width: 400px;
+	margin-left: 200px;
+	display: block;
+}
+
+#footer {
+	clear: both;
+	background: black;
+	color: #838383;
+	padding: 20px 0;
+	text-align: center;
+	width: 1030px;
+	margin-left: -25px;
+	margin-bottom: -5px;
+}
+#footer .info{
+
+}
+#footer a{
+	color: #59B5D8;
+}
+
+
+
+.icon{
+	background: url(../images/icons.png) no-repeat;
+
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+}
+.icon-white{
+	background: url(../images/icons-white.png) no-repeat;
+
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+}
+.icon-heart{
+	background-position: -96px 0;
+}
+.icon-share{
+	background-position: -120px -72px;
+}
+.icon-comment{
+	background-position: -240px -120px;
+}
+.icon-search{
+	background-position: -48px 0;
+}
+
+
+
+</style>
+</head>
+
+<body>
+<div id="pagewrap">
+	<header class="header">
+		<hgroup>
+			<h1 class="site-logo">这不是一个Demo页面<i class="betaIcon">beta</i></h1>
+			<h3>现在是手机当电脑用，电脑当电视机用，电视机当摆设</h3>
+		</hgroup>	
+
+		<nav>
+			<ul id="main-nav" class="clearfix">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">导航一</a></li>
+				<li><a href="#">导航二</a></li>
+				<li><a href="#">导航三</a></li>
+				<li><a href="#">联系我们</a></li>
+				<div class="search">
+					<input type="text" placeholder="你妹夫的二奶" />
+					<button type="button"><i class="icon icon-search"></i></button>
+				</div>
+			</ul>
+			
+		</nav>
+
+	</header>
+
+
+
+	<div class="content">
+
+		<section id="slider"><img src="images/slider_p.png"></section>
+
+		<section class="articles">
+			<article class="article">
+				<div class="img">
+					<img src="images/img1.jpg" />
+					<div class="tips">
+						<div class="date">2015/12/18</div><i class="triangle"></i>
+					</div>
+					
+				</div>
+				<div class="author"><img src="images/face08.jpg"></div>
+				<div class="title">墨西哥专家称"世界末日"是对玛雅历法解读错误</div>
+				<div class="nums">
+					
+					<div class="rectangle">
+						<span><i class="icon icon-heart" title="喜欢"></i>(461)</span>
+						<span><i class="icon icon-share" title="分享"></i>(106)</span>
+						<span><i class="icon icon-comment" title="评论"></i>(15)</span>
+					</div>
+					<i class="trangleLB"></i>			
+				</div>
+				<i class="hr"></i>
+				<div class="desc">墨西哥-- 关注“失落的文明” 大量被“世界末日说”吸引的游客赶到墨西哥尤卡坦半岛等玛雅文明曾经存在的地区参观旅游。 墨西哥国立自治大学教授丹尼尔・弗洛雷斯称，关于玛雅人“世界末日”的说法是对玛雅人历法的错误解读。他表示，玛雅人曾经在天文学领域取得了很高的造诣...</div>
+
+			</article>
+			<article class="article">
+				<div class="img">
+					<img src="images/img3.jpg" />
+					<div class="tips">
+						<div class="date">2015/12/21</div><i class="triangle"></i>
+					</div>
+					
+				</div>
+				<div class="author"><img src="images/face07.jpg"></div>
+				<div class="title">女孩子为什么更喜欢大屏手机？</div>
+				<div class="nums">
+					
+					<div class="rectangle">
+						<span><i class="icon icon-heart" title="喜欢"></i>(331)</span>
+						<span><i class="icon icon-share" title="分享"></i>(96)</span>
+						<span><i class="icon icon-comment" title="评论"></i>(64)</span>
+					</div>
+					<i class="trangleLB"></i>			
+				</div>
+				<i class="hr"></i>
+				<div class="desc">自从去年9月份三星上市了GALAXY Note i9220，这款手机开创了手机跨界平板的先河。不仅让业界为之震惊，并且这款手机也得到了很多用户的喜欢。随之而来的是，各种各样的大屏手机被不同的手机厂家引入市场。2015年，这种趋势依旧。 今年在Android平台上发生了关键性的转变，在四核手机登场并迅速普及之后，Android设备也开始在屏幕上下起了功夫...</div>
+
+			</article>
+			<article class="article">
+				<div class="img">
+					<img src="images/img4.jpg" />
+					<div class="tips">
+						<div class="date">2015/12/18</div><i class="triangle"></i>
+					</div>
+					
+				</div>
+				<div class="author"><img src="images/face02.jpg"></div>
+				<div class="title">西安将进入4G网络时代 下载1部高清电影仅1分钟</div>
+				<div class="nums">
+					
+					<div class="rectangle">
+						<span><i class="icon icon-heart" title="喜欢"></i>(602)</span>
+						<span><i class="icon icon-share" title="分享"></i>(241)</span>
+						<span><i class="icon icon-comment" title="评论"></i>(30)</span>
+					</div>
+					<i class="trangleLB"></i>			
+				</div>
+				<i class="hr"></i>
+				<div class="desc">左为3G网络下载，右为4G网络下载。 西部网讯(记者 吴大伟)“再过不久，西安市民也将体验到一分钟下载一部电影的快感了。”中国移动陕西分公司的相关负责人介绍说。 4G网络有多快？一分钟下载一部高清电影！ 在网上找到一个好看的视频，打开它，然后.....</div>
+
+			</article>
+			<article class="article">
+				<div class="img">
+					<img src="images/img5.jpg" />
+					<div class="tips">
+						<div class="date">2015/12/10</div><i class="triangle"></i>
+					</div>
+					
+				</div>
+				<div class="author"><img src="images/face04.jpg"></div>
+				<div class="title">游戏迷的感动！看任天堂主机的手柄发展史</div>
+				<div class="nums">
+					
+					<div class="rectangle">
+						<span><i class="icon icon-heart" title="喜欢"></i>(161)</span>
+						<span><i class="icon icon-share" title="分享"></i>(97)</span>
+						<span><i class="icon icon-comment" title="评论"></i>(22)</span>
+					</div>
+					<i class="trangleLB"></i>			
+				</div>
+				<i class="hr"></i>
+				<div class="desc">从小时候我们最爱玩的FC红白机到当下最新最时尚的Wii U，掐指算算，任天堂在主机开发上已经走了近二十个年头，而作为玩家玩游戏的基本控制设备，配套手柄的造型与功用特征也在不停的变化：FC手柄的方方正，N64手柄的引入摇杆，Wii手柄的双截棍体感……在下面这段由国外玩家制作的创意动画中...</div>
+
+			</article>
+		</section>
+		
+	</div>
+
+	<aside class="sidebar">
+		<section class="widget">
+			<div class="title">分类文章</div>
+			<ul class="folder">			
+				<li>小明吃饭没(11)</li>
+				<li>测漏(30)</li>
+				<li>鸡蛋(9)</li>
+				<li>阉割你妹夫(136)</li>
+			</ul>
+		</section>
+		<section class="widget ">
+			<div class="title">Faces</div>
+			<ul class="faces clearfix">		
+				<li><img src="images/face01.jpg" alt="我是你妹"></li>
+				<li><img src="images/face02.jpg" alt="遇见"></li>
+				<li><img src="images/face03.jpg" alt="大叔叔"></li>
+				<li><img src="images/face04.jpg" alt="银蛋"></li>
+				<li><img src="images/face05.jpg" alt="小黄"></li>
+				<li><img src="images/face06.jpg" alt="菊花开的那天"></li>
+				<li><img src="images/face07.jpg" alt="Yui"></li>
+				<li><img src="images/face08.jpg" alt="Sunday"></li>
+				<li><img src="images/face09.jpg" alt="蓝Ting"></li>
+				<li><img src="images/face10.jpg" alt="格调"></li>
+				<li><img src="images/face11.jpg" alt="叶盈碧"></li>
+				<li><img src="images/face12.jpg" alt="男孩爱女孩"></li>
+				<li><img src="images/face13.jpg" alt="Waidy"></li>
+				<li><img src="images/face14.jpg" alt="晨斯"></li>
+				<li><img src="images/face15.jpg" alt="熊猫奶酪"></li>
+			</ul>
+		</section>
+		<section class="widget">
+			<div class="title">最新吐槽</div>
+			<ul class="comment">			
+				<li><img src="images/face16.jpg" >			
+					<p class="desc" title="那天我遇到个女孩，又在那天我能再遇到她...">
+						<span class="name">叫我哥</span>
+						<span>那天我遇到个女孩，又在那天我能再遇到她...</span></p>
+				</li>
+				<li><img src="images/face02.jpg" >			
+					<p class="desc"><span class="name">遇见</span><span>那个女生不是我吧</span></p>
+				</li>
+				<li><img src="images/face05.jpg" >			
+					<p class="desc"><span class="name">小黄</span><span>一二楼结婚吧</span></p>
+				</li>
+				<li><img src="images/face10.jpg" >			
+					<p class="desc"><span class="name">格调</span><span>祝一二楼是大叔猪扒</span></p>
+				</li>
+				
+			</ul>
+		</section>
+	</aside>
+
+	<footer id="footer">
+		<p>内容样式和图片参考<a href="http://themify.me/" target="new1">WordPress模版</a> | 
+			文本内容来自<a href="http://www.yuemee.com/" target="new2">阅米网</a></p>
+		<div class="info">
+			<span>Copyright © 1998 - 2015 WilliamTank. All Rights Reserved</sapn>
+			<a href="#">联系我们</a>
+			<a href="#">侵权投诉</a>	
+		</div>
+		<p>这是一个Demo页面</p>
+		
+	</footer>
+
+</div>	
+</body>
+
+<script>
+	
+</script>
+</html>
+            
